@@ -1,0 +1,31 @@
+import numpy as np
+
+R = np.array([
+    [6, 2, -5],
+    [3, 3, -2],
+    [7, 5, -3]
+])
+M = np.array([
+    [13],
+    [13],
+    [26]
+])
+
+array_inv = np.linalg.inv(R) @ M
+print("Matrix solved using linalg.inv:")
+print(array_inv)
+r1 = array_inv
+array_invr = R @ r1
+all_closeinv = np.allclose(array_invr, M)
+print("Its Satisfies?")
+print(all_closeinv)
+print('\n')
+
+array_solve = np.linalg.solve(R, M)
+print("Matrix solved using linalg.solve:")
+print(array_solve)
+r2 = array_solve
+array_solver = R @ r2
+all_closesolve = np.allclose(array_solver, M)
+print("Its Satisfies?")
+print(all_closesolve)
